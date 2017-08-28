@@ -9,6 +9,21 @@
 <body>
 
 	<h1>Novo projeto</h1>
+	
+	<form method="post" action="save">
+		<div>
+			<label>Nome</label>
+			<input type="text" placeholder="nome" name="nome" />
+		</div>
+		<div>
+			<label>Decrição</label>
+			<input type="text" placeholder="descricao" name="descricao" />
+		</div>
+		<div>
+			<input type="submit" value="Cadastrar">
+		</div>
+	</form>
+	
 
 </body>
 </html>
