@@ -19,7 +19,7 @@ import br.com.omega.naturaweb.repository.ProjetoRepository;
 public class ProjetoRepositoryImpl implements ProjetoRepository{
 	
 //private static final String URL = Url.getUrl() + "/produto/";
-	private static final String URL = "http://10.20.91.21:8081/produto/";
+	private static final String URL = "http://localhost:8081/projeto/";
 	
 	private Client client =  Client.create();
 	
