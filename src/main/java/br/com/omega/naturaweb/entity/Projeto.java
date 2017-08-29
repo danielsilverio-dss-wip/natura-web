@@ -5,17 +5,18 @@ public class Projeto {
 	private long id;
 	private String nome;
 	private String descricao;
-	//private Ong ong;
+	private Ong ong;
 	//private List<ProdutosPorProjeto> produtosPorProjeto;
 	//private List<Compra> compras;
 	
 	public Projeto(){}
 	
-	public Projeto(long id, String nome, String descricao) {
+	public Projeto(long id, String nome, String descricao, Ong ong) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
+		this.ong = ong;
 	}
 
 	public long getId() {
@@ -40,6 +41,14 @@ public class Projeto {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Ong getOng() {
+		return ong;
+	}
+
+	public void setOng(Ong ong) {
+		this.ong = ong;
 	}
 	
 	

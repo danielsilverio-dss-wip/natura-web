@@ -12,19 +12,20 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-import br.com.omega.naturaweb.entity.Projeto;
-import br.com.omega.naturaweb.repository.ProjetoRepository;
+import br.com.omega.naturaweb.entity.Ong;
+import br.com.omega.naturaweb.repository.OngRepository;
 
 @Component
-public class ProjetoRepositoryImpl implements ProjetoRepository{
+public class OngRepositoryImpl implements OngRepository{
+
 	
-	private static final String URL = Url.getUrl() + "/projeto/";
+	private static final String URL = Url.getUrl() + "/ong/";
 	//private static final String URL = "http://localhost:8081/projeto/";
 	
 	private Client client =  Client.create();
 	
 	@Override
-	public List<Projeto> findAll()throws WebServiceException{
+	public List<Ong> findAll()throws WebServiceException{
 		WebResource resource = client.resource(URL);
 		
 		//Chama Web service
@@ -39,13 +40,13 @@ public class ProjetoRepositoryImpl implements ProjetoRepository{
 			}
 
 			//Recupera a resposta do servidor
-			Projeto[] array = 
-					response.getEntity(Projeto[].class);
+			Ong[] array = 
+					response.getEntity(Ong[].class);
 			return Arrays.asList(array);
 		}
 				
 	@Override
-	public Projeto findOne(long codigo) throws WebServiceException{
+	public Ong findOne(long codigo) throws WebServiceException{
 		WebResource resource = client.resource(URL + codigo);
 		
 		ClientResponse response = resource
@@ -56,16 +57,16 @@ public class ProjetoRepositoryImpl implements ProjetoRepository{
 			throw new WebServiceException("Http Status: " +
 					response.getStatus());
 		}
-		return response.getEntity(Projeto.class);
+		return response.getEntity(Ong.class);
 	}
 	
 	@Override
-	public void save(Projeto projeto) throws WebServiceException{
+	public void save(Ong ong) throws WebServiceException{
 		WebResource resource = client.resource(URL);
 		
 		ClientResponse response = resource
 				.type(MediaType.APPLICATION_JSON)
-				.post(ClientResponse.class, projeto);
+				.post(ClientResponse.class, ong);
 		
 		if (response.getStatus() != 200){
 			throw new WebServiceException("Http Status: " +
@@ -86,5 +87,6 @@ public class ProjetoRepositoryImpl implements ProjetoRepository{
 		}
 	}
 	*/
+
 
 }

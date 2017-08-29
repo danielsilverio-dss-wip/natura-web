@@ -23,14 +23,12 @@ public class ProjetoServiceImpl implements ProjetoService {
 
 	@Override
 	public Projeto findOne(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findOne(id);
 	}
 
 	@Override
 	public List<Projeto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 
 }
