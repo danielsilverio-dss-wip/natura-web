@@ -23,7 +23,7 @@
 		</c:forEach>
 	</table>
 	
-	
+	<a href="novo">Novo</a>
 	
 </body>
 </html>

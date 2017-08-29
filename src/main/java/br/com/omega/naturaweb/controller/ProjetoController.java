@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.omega.naturaweb.entity.Ong;
 import br.com.omega.naturaweb.entity.Projeto;
 import br.com.omega.naturaweb.service.OngService;
+import br.com.omega.naturaweb.service.ProdutoService;
 import br.com.omega.naturaweb.service.ProjetoService;
 
 @Controller
@@ -24,16 +25,22 @@ public class ProjetoController {
 	@Autowired
 	private OngService ongService;
 	
+	@Autowired
+	private ProdutoService produtoService;
+	
 	@GetMapping("/novo")
 	private ModelAndView novo(){
 		ModelAndView mv = new ModelAndView("projetos/novo");
-		List<Ong> ongs = ongService.findAll();
-		mv.addObject("ongs",ongs);
+		mv.addObject("ongs", ongService.findAll());
+		mv.addObject("produtos", produtoService.findAll());
 		return mv;
 	}
 	
 	@PostMapping("/save")
 	private ModelAndView save(Projeto projeto){
+		
+		System.out.println(projeto.getProdutosPorProjeto().getProduto().getId());
+		
 		service.save(projeto);
 		return listar();
 	}

@@ -28,12 +28,22 @@
 				</c:forEach>
 			</select>
 		</div>
+		
+		<div>
+			<label>Produtos</label>
+			<select name="produtosPorProjeto.produto.id">
+				<c:forEach items="${produtos}" var="produto">
+					<option value="${produto.id}">${produto.nome}</option>
+				</c:forEach>
+			</select>
+		</div>
+		
 		<div>
 			<input type="submit" value="Cadastrar">
 		</div>
 	</form>
-	
-	
+	<br/>
+	<a href="lista">Listar</a>
 	
 
 </body>
