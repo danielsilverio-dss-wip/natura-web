@@ -12,19 +12,19 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-import br.com.omega.naturaweb.entity.Projeto;
-import br.com.omega.naturaweb.repository.ProjetoRepository;
+import br.com.omega.naturaweb.entity.ProdutosPorProjeto;
+import br.com.omega.naturaweb.repository.ProdutosPorProjetoRepository;
 
 @Component
-public class ProjetoRepositoryImpl implements ProjetoRepository{
+public class ProdutosPorProjetoRepositoryImpl implements ProdutosPorProjetoRepository{
 	
-	private static final String URL = Url.getUrl() + "/projeto/";
+	private static final String URL = Url.getUrl() + "/produtosPorProjeto/";
 	//private static final String URL = "http://localhost:8081/projeto/";
 	
 	private Client client =  Client.create();
 	
 	@Override
-	public List<Projeto> findAll()throws WebServiceException{
+	public List<ProdutosPorProjeto> findAll()throws WebServiceException{
 		WebResource resource = client.resource(URL);
 		
 		//Chama Web service
@@ -39,13 +39,13 @@ public class ProjetoRepositoryImpl implements ProjetoRepository{
 			}
 
 			//Recupera a resposta do servidor
-			Projeto[] array = 
-					response.getEntity(Projeto[].class);
+			ProdutosPorProjeto[] array = 
+					response.getEntity(ProdutosPorProjeto[].class);
 			return Arrays.asList(array);
 		}
 				
 	@Override
-	public Projeto findOne(long codigo) throws WebServiceException{
+	public ProdutosPorProjeto findOne(long codigo) throws WebServiceException{
 		WebResource resource = client.resource(URL + codigo);
 		
 		ClientResponse response = resource
@@ -56,22 +56,21 @@ public class ProjetoRepositoryImpl implements ProjetoRepository{
 			throw new WebServiceException("Http Status: " +
 					response.getStatus());
 		}
-		return response.getEntity(Projeto.class);
+		return response.getEntity(ProdutosPorProjeto.class);
 	}
 	
 	@Override
-	public Projeto save(Projeto projeto) throws WebServiceException{
+	public void save(ProdutosPorProjeto ProdutosPorProjeto) throws WebServiceException{
 		WebResource resource = client.resource(URL);
 		
 		ClientResponse response = resource
 				.type(MediaType.APPLICATION_JSON)
-				.post(ClientResponse.class, projeto);
+				.post(ClientResponse.class, ProdutosPorProjeto);
 		
 		if (response.getStatus() != 200){
 			throw new WebServiceException("Http Status: " +
 					response.getStatus());
 		}
-		return response.getEntity(Projeto.class);
 	}
 	
 	/*
@@ -87,5 +86,6 @@ public class ProjetoRepositoryImpl implements ProjetoRepository{
 		}
 	}
 	*/
+
 
 }

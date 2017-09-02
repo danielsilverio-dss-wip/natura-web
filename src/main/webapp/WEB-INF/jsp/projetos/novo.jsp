@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" crossorigin="anonymous" />
+
 </head>
 <body>
 
@@ -14,11 +16,11 @@
 	<form method="post" action="save">
 		<div>
 			<label>Nome</label>
-			<input type="text" placeholder="nome" name="nome" />
+			<input type="text" name="nome" />
 		</div>
 		<div>
 			<label>Decrição</label>
-			<input type="text" placeholder="descricao" name="descricao" />
+			<input type="text" name="descricao" />
 		</div>
 		<div>
 			<label>Ong</label>
@@ -28,15 +30,16 @@
 				</c:forEach>
 			</select>
 		</div>
-		
-		<div>
+		<div id="containerProdutos">
 			<label>Produtos</label>
-			<select name="produtosPorProjeto.produto.id">
+			<select name="produtosPorProjeto[0].produto.id">
 				<c:forEach items="${produtos}" var="produto">
 					<option value="${produto.id}">${produto.nome}</option>
 				</c:forEach>
 			</select>
 		</div>
+		
+		<a href="#" id="addProduto" class="btn btn-light">+</a>
 		
 		<div>
 			<input type="submit" value="Cadastrar">
@@ -45,6 +48,16 @@
 	<br/>
 	<a href="lista">Listar</a>
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script>
+		var contadorDeProdutos = 0
+	
+		$('#addProduto').click(function(){
+			contadorDeProdutos++
+			$('#containerProdutos').append('<br/><select name="produtosPorProjeto['+contadorDeProdutos+'].produto.id"><c:forEach items="${produtos}" var="produto"><option value="${produto.id}">${produto.nome}</option></c:forEach></select>').append('')
+		})
+	</script>
 
 </body>
 </html>

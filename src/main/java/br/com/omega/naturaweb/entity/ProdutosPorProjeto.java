@@ -2,6 +2,8 @@ package br.com.omega.naturaweb.entity;
 
 public class ProdutosPorProjeto {
 	
+	private long id;
+	
 	private Produto produto;
 	
 	private Projeto projeto;
@@ -12,12 +14,21 @@ public class ProdutosPorProjeto {
 
 	public ProdutosPorProjeto(){}
 	
-	public ProdutosPorProjeto(Produto produto, Projeto projeto, int quantidadeFinal, int quantidadeArrecadada) {
+	public ProdutosPorProjeto(long id, Produto produto, Projeto projeto, int quantidadeFinal, int quantidadeArrecadada) {
 		super();
+		this.id = id;
 		this.produto = produto;
 		this.projeto = projeto;
 		this.quantidadeFinal = quantidadeFinal;
 		this.quantidadeArrecadada = quantidadeArrecadada;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public Produto getProduto() {

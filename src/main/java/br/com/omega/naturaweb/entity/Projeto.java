@@ -8,12 +8,11 @@ public class Projeto {
 	private String nome;
 	private String descricao;
 	private Ong ong;
-	private ProdutosPorProjeto produtosPorProjeto;
-	//private List<ProdutosPorProjeto> produtosPorProjeto;
+	private List<ProdutosPorProjeto> produtosPorProjeto;
 	//private List<Compra> compras;
 	
 	public Projeto(){}
-	public Projeto(long id, String nome, String descricao, Ong ong, ProdutosPorProjeto produtosPorProjeto) {
+	public Projeto(long id, String nome, String descricao, Ong ong, List<ProdutosPorProjeto> produtosPorProjeto) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -45,11 +44,13 @@ public class Projeto {
 	public void setOng(Ong ong) {
 		this.ong = ong;
 	}
-	public ProdutosPorProjeto getProdutosPorProjeto() {
+	public List<ProdutosPorProjeto> getProdutosPorProjeto() {
 		return produtosPorProjeto;
 	}
-	public void setProdutosPorProjeto(ProdutosPorProjeto produtosPorProjeto) {
+	public void setProdutosPorProjeto(List<ProdutosPorProjeto> produtosPorProjeto) {
 		this.produtosPorProjeto = produtosPorProjeto;
 	}
+	
+	
 	
 }

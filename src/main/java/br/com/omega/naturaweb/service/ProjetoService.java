@@ -9,7 +9,7 @@ import br.com.omega.naturaweb.entity.Projeto;
 @Service
 public interface ProjetoService {
 	
-	public void save(Projeto projeto);
+	public Projeto save(Projeto projeto);
 	public Projeto findOne(long id);
 	public List<Projeto> findAll();
 
