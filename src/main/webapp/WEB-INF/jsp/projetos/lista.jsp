@@ -23,7 +23,7 @@
 		</c:forEach>
 	</table>
 	
-	<a href="novo">Novo</a>
+	<a href="/ongs/projetos/novo">Novo</a>
 	
 </body>
 </html>

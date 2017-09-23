@@ -13,6 +13,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import br.com.omega.naturaweb.entity.Produto;
+import br.com.omega.naturaweb.entity.Projeto;
 import br.com.omega.naturaweb.repository.ProdutoRepository;
 
 @Component
@@ -72,6 +73,20 @@ public class ProdutoRepositoryImpl implements ProdutoRepository{
 			throw new WebServiceException("Http Status: " +
 					response.getStatus());
 		}
+	}
+
+	@Override
+	public List<Produto> findByEmpresaId(long id) {
+		WebResource resource = client.resource(URL + id);
+		
+		ClientResponse response = resource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+			
+		if (response.getStatus() != 200){
+			throw new WebServiceException("Http Status: " + response.getStatus());
+		}
+		
+		Produto[] array = response.getEntity(Produto[].class);
+		return Arrays.asList(array);
 	}
 	
 	/*

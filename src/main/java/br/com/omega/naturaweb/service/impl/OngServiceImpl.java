@@ -30,4 +30,11 @@ public class OngServiceImpl implements OngService{
 		return repository.findAll();
 	}
 
+	@Override
+	public Ong login(String email, String senha) {
+		Ong ong = new Ong();
+		ong.setId(1);
+		return ong;
+	}
+
 }

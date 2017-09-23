@@ -12,5 +12,6 @@ public interface ProjetoService {
 	public Projeto save(Projeto projeto);
 	public Projeto findOne(long id);
 	public List<Projeto> findAll();
+	public List<Projeto> findByOngId(long id);
 
 }

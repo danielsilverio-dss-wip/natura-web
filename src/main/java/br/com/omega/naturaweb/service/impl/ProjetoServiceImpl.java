@@ -31,4 +31,9 @@ public class ProjetoServiceImpl implements ProjetoService {
 		return repository.findAll();
 	}
 
+	@Override
+	public List<Projeto> findByOngId(long id) {
+		return repository.findByOngId(id);
+	}
+
 }

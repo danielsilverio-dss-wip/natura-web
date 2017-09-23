@@ -30,4 +30,9 @@ public class ProdutoServiceImpl implements ProdutoService{
 		return repository.findAll();
 	}
 
+	@Override
+	public List<Produto> findByEmpresaId(long id) {
+		return repository.findByEmpresaId(id);
+	}
+
 }

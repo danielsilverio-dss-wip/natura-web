@@ -17,8 +17,11 @@ import br.com.omega.naturaweb.service.ProdutosPorProjetoService;
 import br.com.omega.naturaweb.service.ProjetoService;
 
 @Controller
-@RequestMapping("/projetos")
+//@RequestMapping("ongs/{id}/projetos")
+@RequestMapping("ongs/projetos")
 public class ProjetoController {
+	
+	private long ID_ONG = 1;
 	
 	@Autowired
 	private ProjetoService service;
@@ -33,7 +36,7 @@ public class ProjetoController {
 	private ProdutosPorProjetoService produtosPorProjetoService;
 	
 	@GetMapping("/novo")
-	private ModelAndView novo(){
+	public ModelAndView novo(){
 		ModelAndView mv = new ModelAndView("projetos/novo");
 		mv.addObject("ongs", ongService.findAll());
 		mv.addObject("produtos", produtoService.findAll());
@@ -41,30 +44,10 @@ public class ProjetoController {
 	}
 	
 	@PostMapping("/save")
-	private ModelAndView save(Projeto projeto){
-		
-		//System.out.println(projeto.getProdutosPorProjeto().getProduto().getId());
-		/*
-		System.out.println("ong: " + projeto.getOng().getId());
-		List<ProdutosPorProjeto> produtos = projeto.getProdutosPorProjeto();
-		
-		System.out.println("---------------------------------------------------");
-		
-		for (ProdutosPorProjeto produto : produtos) {
-			System.out.println("\tproduto: " + produto.getProduto().getId());
-			produto.setQuantidadeFinal(50);
-			produto.setQuantidadeFinal(45);
-		}
-		
-		System.out.println("---------------------------------------------------");
-		*/
-		
-		
+	public ModelAndView save(Projeto projeto){
 		
 		Projeto projetoPersistido = service.save(projeto);
 		long idProjeto = projetoPersistido.getId();
-		
-		
 		
 		List<ProdutosPorProjeto> produtos = projeto.getProdutosPorProjeto();
 		
@@ -76,21 +59,22 @@ public class ProjetoController {
 			p.setId(idProjeto);
 			produto.setProjeto(p);
 			
-			System.out.println("p.getId()" + p.getId());
-			System.out.println("produto.getProjeto().getId(): " + produto.getProjeto().getId());
 			produtosPorProjetoService.save(produto);
 		}
 		
-		
-		
-		
-		return listar();
+		return listar(ID_ONG);
+	}
+	
+	public ModelAndView loginRedirect(Long id){
+		ModelAndView mv = new ModelAndView("redirect:/ongs/projetos/lista");
+		// mv.addObject("projetos", service.findByOngId(id));
+		return mv;
 	}
 	
 	@GetMapping("/lista")
-	private ModelAndView listar(){
+	public ModelAndView listar(Long id){
 		ModelAndView mv = new ModelAndView("projetos/lista");
-		mv.addObject("projetos", service.findAll());
+		// mv.addObject("projetos", service.findByOngId(id));
 		return mv;
 	}
 

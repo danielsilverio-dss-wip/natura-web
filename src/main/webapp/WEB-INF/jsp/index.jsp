@@ -8,7 +8,13 @@
 </head>
 <body>
 
-	<h1>oi meu chapa</h1>
+	<nav>
+		<p>Login</p>
+		<ul>
+			<li><a href="ong/login">ONG</a></li>
+			<li><a href="empresa/login">Empresa</a></li>
+		</ul>
+	</nav>
 
 </body>
 </html>
