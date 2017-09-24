@@ -7,10 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/empresas/login" method="post">
-		<input type="submit" value="Login" />	
-	</form>
+	<h1>Cadastre sua ONG</h1>
 	
-	<p>É novo aqui? Faça seu <a href="/empresas/cadastro">cadastro</a> :)</p>
+	<form action="cadastro" method="post">
+		<p>(campos de cadastro)</p>
+		
+		<input type="submit" value="Pronto!" />
+	</form>
 </body>
 </html>

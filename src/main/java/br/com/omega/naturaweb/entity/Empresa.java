@@ -11,19 +11,25 @@ public class Empresa {
 	
 	private long id;
 	
+	private String email;
+	
 	private String nome;
 	
 	private String cnpj;
+	
+	private String linkBusca;
 	
 	private List<Produto> produtos;
 	
 	public Empresa(){};
 	
-	public Empresa(long id, String nome, String cnpj) {
+	public Empresa(long id, String email, String nome, String cnpj, String linkBusca) {
 		super();
 		this.id = id;
+		this.email = email;
 		this.nome = nome;
 		this.cnpj = cnpj;
+		this.linkBusca = linkBusca;
 	}
 
 	public long getId() {
@@ -48,6 +54,22 @@ public class Empresa {
 
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getLinkBusca() {
+		return linkBusca;
+	}
+
+	public void setLinkBusca(String linkBusca) {
+		this.linkBusca = linkBusca;
 	}
 	
 }

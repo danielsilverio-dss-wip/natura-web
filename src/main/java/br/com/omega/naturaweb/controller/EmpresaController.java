@@ -40,8 +40,16 @@ public class EmpresaController {
 	
 	@PostMapping("/cadastro")
 	public ModelAndView cadastro(Empresa empresa){
-		service.save(empresa);
 		
+		/* mapeado corretamente! */
+		
+		// a fazer: service.save(empresa);
+		
+		empresa.setEmail(null);
+		empresa.setLinkBusca(null);
+		
+		service.save(empresa);
+
 		return produtosController.listar(ID_EMPRESA);
 	}
 

@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
 	<form action="/ongs/login" method="post">
 		<input type="submit" value="Login" />	
 	</form>
 
+	<p>É novo aqui? Faça seu <a href="/empresas/cadastro">cadastro</a> :)</p>
 </body>
 </html>

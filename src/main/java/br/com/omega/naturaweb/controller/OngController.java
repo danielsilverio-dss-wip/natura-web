@@ -44,8 +44,8 @@ public class OngController {
 	
 	@PostMapping("/cadastro")
 	public ModelAndView cadastro(Ong ong){
-		service.save(ong);
-		//return projetoController.listar(ong.getId());
+		// service.save(ong);
+		// return projetoController.listar(ong.getId());
 		return projetoController.loginRedirect(ONG_ID);
 	}
 	
