@@ -9,14 +9,6 @@
 <body>
 	<h1>Cadastre sua empresa</h1>
 	
-	private String email;
-	
-	private String nome;
-	
-	private String cnpj;
-	
-	private String linkBusca;
-	
 	<form action="cadastro" method="post">
 
 		<div>

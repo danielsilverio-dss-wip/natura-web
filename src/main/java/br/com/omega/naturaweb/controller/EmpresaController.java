@@ -47,9 +47,9 @@ public class EmpresaController {
 		
 		empresa.setEmail(null);
 		empresa.setLinkBusca(null);
-		
+		/*
 		service.save(empresa);
-
+		 */
 		return produtosController.listar(ID_EMPRESA);
 	}
 

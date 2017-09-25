@@ -11,17 +11,25 @@ public class Produto{
 	
 	private Categoria categoria;
 	
+	private boolean fornecido;
 
 	private List<Empresa> empresas;
 	
 	public Produto(){}
 
-	public Produto(long id, String nome, Categoria categoria, List<Empresa> empresas) {
+	public Produto(long id, String nome, Categoria categoria, boolean fornecido) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.categoria = categoria;
-		this.empresas = empresas;
+		this.fornecido = fornecido;
+	}
+	
+	public Produto(String nome, Categoria categoria, boolean fornecido) {
+		super();
+		this.nome = nome;
+		this.categoria = categoria;
+		this.fornecido = fornecido;
 	}
 
 	public long getId() {
@@ -54,6 +62,16 @@ public class Produto{
 
 	public void setEmpresas(List<Empresa> empresas) {
 		this.empresas = empresas;
-	};
+	}
+
+	public boolean isFornecido() {
+		return fornecido;
+	}
+
+	public void setFornecido(boolean fornecido) {
+		this.fornecido = fornecido;
+	}
+	
+	
 		
 }
