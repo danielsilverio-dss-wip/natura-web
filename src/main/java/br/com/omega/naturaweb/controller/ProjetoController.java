@@ -38,8 +38,8 @@ public class ProjetoController {
 	@GetMapping("/novo")
 	public ModelAndView novo(){
 		ModelAndView mv = new ModelAndView("projetos/novo");
-		mv.addObject("ongs", ongService.findAll());
-		mv.addObject("produtos", produtoService.findAll());
+		//mv.addObject("ongs", ongService.findAll());
+		//mv.addObject("produtos", produtoService.findAll());
 		return mv;
 	}
 	

@@ -8,9 +8,17 @@
 </head>
 <body>
 	<form action="/ongs/login" method="post">
+		<div>
+			<label>Email</label>
+			<input type="text" name="email" />
+		</div>
+		<div>
+			<label>Senha</label>
+			<input type="password" name="senha" />
+		</div>
 		<input type="submit" value="Login" />	
 	</form>
 
-	<p>É novo aqui? Faça seu <a href="/empresas/cadastro">cadastro</a> :)</p>
+	<p>É novo aqui? Faça seu <a href="/ongs/cadastro">cadastro</a> :)</p>
 </body>
 </html>

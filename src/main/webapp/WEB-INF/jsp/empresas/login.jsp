@@ -8,6 +8,14 @@
 </head>
 <body>
 	<form action="/empresas/login" method="post">
+		<div>
+			<label>Email</label>
+			<input class="inpit" type="text" name="email" />
+		</div>
+		<div>
+			<label>Senha</label>
+			<input type="password" name="senha" />
+		</div>
 		<input type="submit" value="Login" />	
 	</form>
 	
