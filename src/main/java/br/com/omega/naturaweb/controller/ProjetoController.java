@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -46,6 +47,12 @@ public class ProjetoController {
 	@PostMapping("/save")
 	public ModelAndView save(Projeto projeto){
 		
+		System.out.println(projeto.getNome());
+		System.out.println(projeto.getDescricao());
+		System.out.println(projeto.getImagem());
+		
+		
+		/*
 		Projeto projetoPersistido = service.save(projeto);
 		long idProjeto = projetoPersistido.getId();
 		
@@ -61,7 +68,7 @@ public class ProjetoController {
 			
 			produtosPorProjetoService.save(produto);
 		}
-		
+		*/
 		return listar(ID_ONG);
 	}
 	
@@ -78,4 +85,8 @@ public class ProjetoController {
 		return mv;
 	}
 
+	@PostMapping("/teste")
+	public void teste(@RequestBody Projeto projeto){
+		System.out.println("nome:" + projeto.getNome());
+	}
 }

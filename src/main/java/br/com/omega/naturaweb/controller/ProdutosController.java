@@ -54,7 +54,7 @@ public class ProdutosController {
 	}
 	
 	@PostMapping("/save")
-	public ModelAndView save(Produto produto){
+	public ModelAndView save(@RequestBody Produto produto){
 		service.save(produto);
 		return listar(ID_EMPRESA);
 	}

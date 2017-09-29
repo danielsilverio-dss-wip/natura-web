@@ -42,7 +42,15 @@
 		<a href="#" id="addProduto" class="btn btn-light">+</a>
 		
 		<div>
+			<input type="file" name="imagem" class="upload-file"/>
+		</div>
+		
+		<div>
 			<input type="submit" value="Cadastrar">
+		</div>
+		
+		<div>
+			<button class="btn-ajax">Ajax</button>
 		</div>
 	</form>
 	<br/>
@@ -57,6 +65,58 @@
 			contadorDeProdutos++
 			$('#containerProdutos').append('<br/><select name="produtosPorProjeto['+contadorDeProdutos+'].produto.id"><c:forEach items="${produtos}" var="produto"><option value="${produto.id}">${produto.nome}</option></c:forEach></select>').append('')
 		})
+		
+		var projeto = {
+
+				nome: '',
+				descricao: '',
+				produtos: [],
+				imagem: []
+			}
+		
+		
+		var imagem
+		$('.upload-file').change(function(){
+			
+			var reader = new FileReader()
+		  
+			reader.onload = function() {
+		
+	       		var arrayBuffer = this.result,
+				array = new Uint8Array(arrayBuffer),
+				binaryString = String.fromCharCode.apply(null, array);
+				
+				var img = binaryString
+				console.log(img) 
+
+				projeto.imagem = img
+			}
+			
+			reader.readAsArrayBuffer(this.files[0])
+		})
+		
+		$('.btn-ajax').click(function(){
+				/*
+				$('.produto').each(function(index, item){
+					var produto = {id: $(item).find('.produto-id').text(),
+									fornecido: $(item).find('.produto-fornecido').attr('value')}
+					produtos.push(produto)
+					console.log(produto)
+				})				
+				*/
+
+				projeto.nome = 'proj'
+				projeto.descricao = 'desc'
+
+				var projetoString = JSON.stringify(projeto)
+				debugger
+				$.ajax({
+					type: 'POST',
+					url: '/ongs/projetos/teste',
+					contentType: 'application/json',
+					data: projetoString
+				})
+			})
 	</script>
 
 </body>
