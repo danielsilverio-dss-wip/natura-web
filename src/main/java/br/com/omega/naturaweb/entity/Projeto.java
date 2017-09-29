@@ -8,18 +8,23 @@ public class Projeto {
 	private String nome;
 	private String descricao;
 	private Ong ong;
+	private byte[] imagem;
 	private List<ProdutosPorProjeto> produtosPorProjeto;
 	//private List<Compra> compras;
 	
 	public Projeto(){}
-	public Projeto(long id, String nome, String descricao, Ong ong, List<ProdutosPorProjeto> produtosPorProjeto) {
+	
+	public Projeto(long id, String nome, String descricao, Ong ong, byte[] imagem,
+			List<ProdutosPorProjeto> produtosPorProjeto) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.ong = ong;
+		this.imagem = imagem;
 		this.produtosPorProjeto = produtosPorProjeto;
 	}
+
 	public long getId() {
 		return id;
 	}
@@ -50,7 +55,10 @@ public class Projeto {
 	public void setProdutosPorProjeto(List<ProdutosPorProjeto> produtosPorProjeto) {
 		this.produtosPorProjeto = produtosPorProjeto;
 	}
-	
-	
-	
+	public byte[] getImagem() {
+		return imagem;
+	}
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
+	}
 }
