@@ -61,5 +61,4 @@ public class Projeto {
 	public void setImagem(byte[] imagem) {
 		this.imagem = imagem;
 	}
-	
 }
