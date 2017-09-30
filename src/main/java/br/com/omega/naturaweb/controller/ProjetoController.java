@@ -1,17 +1,20 @@
 package br.com.omega.naturaweb.controller;
 
-import java.util.List;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.omega.naturaweb.entity.ProdutosPorProjeto;
 import br.com.omega.naturaweb.entity.Projeto;
 import br.com.omega.naturaweb.service.OngService;
 import br.com.omega.naturaweb.service.ProdutoService;
@@ -24,7 +27,13 @@ import br.com.omega.naturaweb.service.ProjetoService;
 public class ProjetoController {
 	
 	private long ID_ONG = 1;
+	private static Projeto testeProjeto;
 	
+	public ProjetoController() {
+		super();
+		testeProjeto = new Projeto();
+	}
+
 	@Autowired
 	private ProjetoService service;
 
@@ -44,11 +53,18 @@ public class ProjetoController {
 		//mv.addObject("produtos", produtoService.findAll());
 		return mv;
 	}
-	
+	/*
+	@PostMapping(value="/save", consumes=MediaType.APPLICATION_FORM_URLENCODED)
+	public ModelAndView save(Projeto projeto){
+	 */
 	@PostMapping("/save")
-	public ModelAndView save(@PathVariable Projeto projeto){
-
-		System.out.println("imagem: " + projeto.getImagem());
+	public ModelAndView save(@RequestBody Projeto projeto){
+		
+		projeto.setImagem(testeProjeto.getImagem());
+		
+		System.out.println("nome:" + projeto.getNome());
+		System.out.println("desc:" + projeto.getDescricao());
+		System.out.println("img:" + projeto.getImagem());
 
 		/*
 		Projeto projetoPersistido = service.save(projeto);
@@ -82,9 +98,47 @@ public class ProjetoController {
 		// mv.addObject("projetos", service.findByOngId(id));
 		return mv;
 	}
+	
+	// @RequestMapping(method = RequestMethod.POST, value = "/upload")
+	@PostMapping("/upload")
+    @ResponseBody
+    public void uploadFile(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+		
+		testeProjeto.setImagem(multipartFile.getBytes());
+		
+		byte[] bytes = multipartFile.getBytes();
+		/*
+		for (int i = 0; i < bytes.length; i++) {
+			System.out.print(bytes[i]);
+		}
+		System.out.println("bytes: " + multipartFile.getBytes());
+		System.out.println("size: " + multipartFile.getSize());
+		*/
+		File file = new File("d:/sl/teste/teste.jpg");
+		//multipartFile.transferTo(file);
+		
+		try ( FileOutputStream outputStream = new FileOutputStream(file); ) {
+	        outputStream.write(multipartFile.getBytes()); 
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 
+		
+		/*
+		ModelAndView mv = new ModelAndView("redirect:/ongs/projetos/lista");
+		mv.addObject("testeimagem", bytes)
+		return mv;
+		 */
+		
+    }
+	
+	/*
 	@PostMapping("/teste")
-	public void teste(@RequestBody Projeto projeto){
+	public ModelAndView teste(@RequestBody Projeto projeto){
 		System.out.println("nome:" + projeto.getNome());
+		System.out.println("desc:" + projeto.getDescricao());
+		System.out.println("img:" + projeto.getImagem());
+		return listar(ID_ONG);
 	}
+	*/
 }

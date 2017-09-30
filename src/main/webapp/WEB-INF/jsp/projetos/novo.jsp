@@ -48,11 +48,11 @@
 		<div>
 			<input type="submit" value="Cadastrar">
 		</div>
+	</form>
 		
 		<div>
 			<button class="btn-ajax">Ajax</button>
 		</div>
-	</form>
 	<br/>
 	<a href="lista">Listar</a>
 	
@@ -67,14 +67,16 @@
 
 
 
-
+<!-- 
 <input type='file' />
 </br><img id="myImg" src="#" alt="your image" height=200 width=100>
-	
+ -->	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
 	<script type="text/javascript">
     /* The uploader form */
+    
+    /*
     $(function () {
         $(":file").change(function () {
             if (this.files && this.files[0]) {
@@ -91,17 +93,18 @@
         $('#myImg').attr('src', e.target.result);
         $('#yourImage').attr('src', e.target.result);
     };
-
+	*/
 </script>
 	
 	<script>
+	
 		var contadorDeProdutos = 0
 	
 		$('#addProduto').click(function(){
 			contadorDeProdutos++
 			$('#containerProdutos').append('<br/><select name="produtosPorProjeto['+contadorDeProdutos+'].produto.id"><c:forEach items="${produtos}" var="produto"><option value="${produto.id}">${produto.nome}</option></c:forEach></select>').append('')
 		})
-		
+		/*
 		var projeto = {
 
 				nome: '',
@@ -110,12 +113,12 @@
 				imagem: []
 			}
 		
-		
+			
 		var imagem
 		$('.upload-file').change(function(){
-			
+			debugger
 			var reader = new FileReader()
-		  
+
 			reader.onload = function() {
 		
 	       		var arrayBuffer = this.result,
@@ -123,7 +126,6 @@
 				binaryString = String.fromCharCode.apply(null, array);
 				
 				var img = binaryString
-				console.log(img) 
 
 				projeto.imagem = img
 			}
@@ -132,28 +134,65 @@
 		})
 		
 		$('.btn-ajax').click(function(){
-				/*
-				$('.produto').each(function(index, item){
-					var produto = {id: $(item).find('.produto-id').text(),
-									fornecido: $(item).find('.produto-fornecido').attr('value')}
-					produtos.push(produto)
-					console.log(produto)
-				})				
-				*/
 
 				projeto.nome = 'proj'
 				projeto.descricao = 'desc'
 
 				var projetoString = JSON.stringify(projeto)
+				
 				debugger
+				
 				$.ajax({
 					type: 'POST',
-					url: '/ongs/projetos/teste',
+					url: '/ongs/projetos/save',
 					contentType: 'application/json',
 					data: projetoString
 				})
 			})
-	</script>
+			*/
 
+			var projeto = {
+					nome: '',
+					descricao: ''
+				}
+		
+			var files = []
+		
+			$('.upload-file').change(function(event){
+				files = event.target.files
+			})
+			
+			$('.btn-ajax').click(function(){
+
+				var form = new FormData();
+	            form.append("file", files[0]);
+
+		        $.ajax({
+			        dataType : 'json',
+                    url : "/ongs/projetos/upload",
+                    type : "POST",
+                    enctype: 'multipart/form-data',
+                    data : form,
+                    processData: false, 
+                    contentType:false
+	            });
+
+		        projeto.nome = 'proj'
+				projeto.descricao = 'desc'
+
+				var projetoString = JSON.stringify(projeto)
+					debugger
+				$.ajax({
+					type: 'POST',
+					url: '/ongs/projetos/save',
+					contentType: 'application/json',
+					data: projetoString
+				})
+				
+			})
+			
+			
+	</script>
+	
 </body>
 </html>

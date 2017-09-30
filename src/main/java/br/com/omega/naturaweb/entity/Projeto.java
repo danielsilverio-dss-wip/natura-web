@@ -2,6 +2,8 @@ package br.com.omega.naturaweb.entity;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Projeto {
 	
 	private long id;
@@ -9,6 +11,8 @@ public class Projeto {
 	private String descricao;
 	private Ong ong;
 	private byte[] imagem;
+	//private String imagem;
+	//private MultipartFile imagem;
 	private List<ProdutosPorProjeto> produtosPorProjeto;
 	//private List<Compra> compras;
 	
@@ -24,7 +28,32 @@ public class Projeto {
 		this.imagem = imagem;
 		this.produtosPorProjeto = produtosPorProjeto;
 	}
-
+	
+	/*
+	public Projeto(long id, String nome, String descricao, Ong ong, String imagem,
+			List<ProdutosPorProjeto> produtosPorProjeto) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.ong = ong;
+		this.imagem = imagem;
+		this.produtosPorProjeto = produtosPorProjeto;
+	}
+	
+	public Projeto(long id, String nome, String descricao, Ong ong, MultipartFile imagem,
+			List<ProdutosPorProjeto> produtosPorProjeto) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.ong = ong;
+		this.imagem = imagem;
+		this.produtosPorProjeto = produtosPorProjeto;
+	}
+	 */
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -61,4 +90,18 @@ public class Projeto {
 	public void setImagem(byte[] imagem) {
 		this.imagem = imagem;
 	}
+	/*
+	public String getImagem() {
+		return imagem;
+	}
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+	public MultipartFile getImagem() {
+		return imagem;
+	}
+	public void setImagem(MultipartFile imagem) {
+		this.imagem = imagem;
+	}
+	 */
 }
