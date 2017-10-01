@@ -1,8 +1,7 @@
 package br.com.omega.naturaweb.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +19,7 @@ import br.com.omega.naturaweb.service.OngService;
 import br.com.omega.naturaweb.service.ProdutoService;
 import br.com.omega.naturaweb.service.ProdutosPorProjetoService;
 import br.com.omega.naturaweb.service.ProjetoService;
+import br.com.omega.naturaweb.to.ProjetoTO;
 
 @Controller
 //@RequestMapping("ongs/{id}/projetos")
@@ -49,8 +49,8 @@ public class ProjetoController {
 	@GetMapping("/novo")
 	public ModelAndView novo(){
 		ModelAndView mv = new ModelAndView("projetos/novo");
-		//mv.addObject("ongs", ongService.findAll());
-		//mv.addObject("produtos", produtoService.findAll());
+		mv.addObject("ongs", ongService.findAll());
+		mv.addObject("produtos", produtoService.findAll());
 		return mv;
 	}
 	/*
@@ -58,12 +58,13 @@ public class ProjetoController {
 	public ModelAndView save(Projeto projeto){
 	 */
 	@PostMapping("/save")
-	public ModelAndView save(@RequestBody Projeto projeto){
+	public ModelAndView save(@RequestBody ProjetoTO projeto){
 		
 		projeto.setImagem(testeProjeto.getImagem());
 		
 		System.out.println("nome:" + projeto.getNome());
-		System.out.println("desc:" + projeto.getDescricao());
+		System.out.println("descricao:" + projeto.getDescricao());
+		System.out.println("ong:" + projeto.getOng());
 		System.out.println("img:" + projeto.getImagem());
 
 		/*
@@ -105,15 +106,9 @@ public class ProjetoController {
     public void uploadFile(@RequestParam("file") MultipartFile multipartFile) throws IOException {
 		
 		testeProjeto.setImagem(multipartFile.getBytes());
-		
-		byte[] bytes = multipartFile.getBytes();
 		/*
-		for (int i = 0; i < bytes.length; i++) {
-			System.out.print(bytes[i]);
-		}
-		System.out.println("bytes: " + multipartFile.getBytes());
-		System.out.println("size: " + multipartFile.getSize());
-		*/
+		byte[] bytes = multipartFile.getBytes();
+		
 		File file = new File("d:/sl/teste/teste.jpg");
 		//multipartFile.transferTo(file);
 		
@@ -122,7 +117,7 @@ public class ProjetoController {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-
+		*/
 		
 		/*
 		ModelAndView mv = new ModelAndView("redirect:/ongs/projetos/lista");
