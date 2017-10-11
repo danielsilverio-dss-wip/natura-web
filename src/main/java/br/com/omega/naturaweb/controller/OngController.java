@@ -34,7 +34,7 @@ public class OngController {
 		//Ong ong = service.login(email, senha);
 		
 		//return projetoController.listar(ong.getId());
-		return projetoController.listar(ONG_ID);
+		return projetoController.listar();
 	}
 	
 	@GetMapping("/cadastro")

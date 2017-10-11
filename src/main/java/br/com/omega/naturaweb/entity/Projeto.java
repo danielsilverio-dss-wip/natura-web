@@ -29,6 +29,11 @@ public class Projeto {
 		this.produtosPorProjeto = produtosPorProjeto;
 	}
 	
+	public Projeto(long id) {
+		super();
+		this.id = id;
+	}
+
 	/*
 	public Projeto(long id, String nome, String descricao, Ong ong, String imagem,
 			List<ProdutosPorProjeto> produtosPorProjeto) {

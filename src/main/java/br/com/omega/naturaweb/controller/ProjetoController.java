@@ -1,7 +1,7 @@
 package br.com.omega.naturaweb.controller;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.omega.naturaweb.entity.Ong;
+import br.com.omega.naturaweb.entity.Produto;
+import br.com.omega.naturaweb.entity.ProdutosPorProjeto;
 import br.com.omega.naturaweb.entity.Projeto;
 import br.com.omega.naturaweb.service.OngService;
 import br.com.omega.naturaweb.service.ProdutoService;
@@ -60,31 +63,31 @@ public class ProjetoController {
 	@PostMapping("/save")
 	public ModelAndView save(@RequestBody ProjetoTO projeto){
 		
-		projeto.setImagem(testeProjeto.getImagem());
-		
-		System.out.println("nome:" + projeto.getNome());
-		System.out.println("descricao:" + projeto.getDescricao());
-		System.out.println("ong:" + projeto.getOng());
-		System.out.println("img:" + projeto.getImagem());
+		Ong ong = new Ong();
+		ong.setId(ID_ONG);
 
-		/*
-		Projeto projetoPersistido = service.save(projeto);
+		// transferindo de TO para Entity
+		Projeto projetoEntity = new Projeto();
+		projetoEntity.setNome(projeto.getNome());
+		projetoEntity.setDescricao(projeto.getNome());
+		projetoEntity.setOng(ong);
+		
+		Projeto projetoPersistido = service.save(projetoEntity);
 		long idProjeto = projetoPersistido.getId();
 		
-		List<ProdutosPorProjeto> produtos = projeto.getProdutosPorProjeto();
+		long[] produtos = projeto.getProdutosPorProjeto();
 		
-		for (ProdutosPorProjeto produto : produtos) {
+		for (long produtoId : produtos) {
 			
-			System.out.println("idProjeto: " + idProjeto);
+			ProdutosPorProjeto p = new ProdutosPorProjeto();
+			p.setId(produtoId);
+			p.setProjeto(new Projeto(idProjeto));
+			System.out.println("produtoId: " + p.getId());
+			produtosPorProjetoService.save(p);
 			
-			Projeto p = new Projeto();
-			p.setId(idProjeto);
-			produto.setProjeto(p);
-			
-			//produtosPorProjetoService.save(produto);
 		}
-		*/
-		return listar(ID_ONG);
+		
+		return listar();
 	}
 	
 	public ModelAndView loginRedirect(Long id){
@@ -94,9 +97,10 @@ public class ProjetoController {
 	}
 	
 	@GetMapping("/lista")
-	public ModelAndView listar(Long id){
+	public ModelAndView listar(){
 		ModelAndView mv = new ModelAndView("projetos/lista");
-		// mv.addObject("projetos", service.findByOngId(id));
+		List<Projeto> lista = service.findByOngId(ID_ONG);
+		mv.addObject("projetos", lista);
 		return mv;
 	}
 	

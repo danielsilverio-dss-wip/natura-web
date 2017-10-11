@@ -150,10 +150,15 @@
 
 	        projeto.nome = $('#nome').val()
 			projeto.descricao = $('#descricao').val()
-			projeto.ongpar = $('#ong').val()
+			//projeto.ongpar = $('#ong').val()
+			projeto.produtosPorProjeto = []
+
+	        $('.select-produtos').each(function(index, item){
+	        	projeto.produtosPorProjeto.push($(item).val())
+	        })
 
 			var projetoString = JSON.stringify(projeto)
-				debugger
+				
 			$.ajax({
 				type: 'POST',
 				url: '/ongs/projetos/save',

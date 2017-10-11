@@ -69,7 +69,7 @@ public class ProjetoRepositoryImpl implements ProjetoRepository{
 
 	@Override
 	public List<Projeto> findByOngId(long id)throws WebServiceException{
-		WebResource resource = client.resource(URL + id);
+		WebResource resource = client.resource(URL + "busca/" + id);
 		
 		ClientResponse response = resource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 			
