@@ -7,6 +7,8 @@
  
 <jsp:include page= "../snippets/nav-ong.jsp"/>
 
+<div class="container">
+
 		<div class="conteudo">
 
 
@@ -24,5 +26,6 @@
 
 	<p>É novo aqui? Faça seu <a href="/ongs/cadastro">cadastro</a> :)</p>
 	
+	</div>
 	</div>
 </tags:template>

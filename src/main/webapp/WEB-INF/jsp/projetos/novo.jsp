@@ -7,20 +7,26 @@
  
 <jsp:include page= "../snippets/nav-ong.jsp"/>
 
+<div class="container">
+
 		<div class="conteudo">
 
-	<h1>Novo projeto</h1>
+	<h2>Novo projeto</h2>
+	</br>
+	
 	
 	<form method="post" action="save">
-		<div>
-			<label>Nome</label>
-			<input type="text" name="nome" id="nome" />
+		<div class="form-group">
+			<label>Nome</label></br></br>
+			<input class="form-control" placeholder="Digite seu nome" type="text" name="nome" id="nome" />
 		</div>
-		<div>
-			<label>Decrição</label>
-			<input type="text" name="descricao" id="descricao" />
+		
+		<div class="form-group">
+			<label>Decrição</label></br></br>
+			<input class="form-control" type="text" name="descricao" id="descricao" placeholder="Digite uma descrição" />
 		</div>
-		<div>
+		
+		<div class="form-group">
 			<label>Ong</label>
 			<select name="ong.id" id="ong">
 				<c:forEach items="${ongs}" var="ong">
@@ -33,7 +39,7 @@
 				</c:forEach>
 			</select>
 		</div>
-		<div id="containerProdutos">
+		<div class="form-group" id="containerProdutos">
 			<label>Produtos</label>
 			 
 			<select name="produtosPorProjeto[0].produto.id" class="select-produtos">
@@ -55,8 +61,9 @@
 		</div>
 		 -->
 	</form>
+	</br>
 	<div>
-		<button class="btn-ajax">Cadastrar</button>
+		<button class="btn btn-primary">Cadastrar</button>
 	</div>
 	<br/>
 	<a href="lista">Listar</a>
@@ -180,6 +187,7 @@
 			
 	</script>
 	
+	</div>
 	</div>
 	
 </tags:template>
