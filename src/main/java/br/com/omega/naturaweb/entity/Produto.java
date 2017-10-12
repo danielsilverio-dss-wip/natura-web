@@ -31,6 +31,11 @@ public class Produto{
 		this.categoria = categoria;
 		this.fornecido = fornecido;
 	}
+	
+	public Produto(long id) {
+		super();
+		this.id = id;
+	}
 
 	public long getId() {
 		return id;

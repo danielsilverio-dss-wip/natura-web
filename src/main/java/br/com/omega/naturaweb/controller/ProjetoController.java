@@ -22,6 +22,7 @@ import br.com.omega.naturaweb.service.OngService;
 import br.com.omega.naturaweb.service.ProdutoService;
 import br.com.omega.naturaweb.service.ProdutosPorProjetoService;
 import br.com.omega.naturaweb.service.ProjetoService;
+import br.com.omega.naturaweb.to.ProdutosPorProjetoTO;
 import br.com.omega.naturaweb.to.ProjetoTO;
 
 @Controller
@@ -75,16 +76,15 @@ public class ProjetoController {
 		Projeto projetoPersistido = service.save(projetoEntity);
 		long idProjeto = projetoPersistido.getId();
 		
-		long[] produtos = projeto.getProdutosPorProjeto();
+		ProdutosPorProjetoTO[] produtos = projeto.getProdutosPorProjeto();
 		
-		for (long produtoId : produtos) {
+		for (ProdutosPorProjetoTO produto : produtos) {
 			
 			ProdutosPorProjeto p = new ProdutosPorProjeto();
-			p.setId(produtoId);
+			p.setProduto(new Produto(produto.getId()));
 			p.setProjeto(new Projeto(idProjeto));
-			System.out.println("produtoId: " + p.getId());
+			p.setQuantidadeFinal(produto.getQuantidade());
 			produtosPorProjetoService.save(p);
-			
 		}
 		
 		return listar();

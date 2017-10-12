@@ -36,11 +36,15 @@
 		<div id="containerProdutos">
 			<label>Produtos</label>
 			 
-			<select name="produtosPorProjeto[0].produto.id" class="select-produtos">
-				<c:forEach items="${produtos}" var="produto">
-					<option value="${produto.id}" class="opt-produtos" >${produto.nome}</option>
-				</c:forEach>
-			</select>
+			<div class="produto-wrap" id="produto-wrap-0">
+				<select name="produtosPorProjeto[0].produto.id" class="select-produtos">
+					<c:forEach items="${produtos}" var="produto">
+						<option value="${produto.id}" class="opt-produtos" >${produto.nome}</option>
+					</c:forEach>
+				</select>
+				<label>Quantidade necessária: </label>
+				<input type="number" class="quantidade" />
+			</div>
 			 
 		</div>
 		
@@ -151,8 +155,16 @@
 			//projeto.ongpar = $('#ong').val()
 			projeto.produtosPorProjeto = []
 
-	        $('.select-produtos').each(function(index, item){
-	        	projeto.produtosPorProjeto.push($(item).val())
+	        $('.produto-wrap').each(function(index, item){
+
+		        var produto = {
+				        id: $(item).find('.select-produtos').val(),
+				        quantidade:  $(item).find('.quantidade').val()
+				    }
+
+		        console.log(produto)
+			    
+	        	projeto.produtosPorProjeto.push(produto)
 	        })
 
 			var projetoString = JSON.stringify(projeto)
@@ -167,10 +179,13 @@
 		})
 		
 		function createProdutoSelect(){
+
 			
-			$('#containerProdutos').append(
-					'<br/><select name="produtosPorProjeto['+contadorDeProdutos+'].produto.id" class="select-produtos"><c:forEach items="${produtos}" var="produto"><option value="${produto.id}" class="opt-produto">${produto.nome}</option></c:forEach></select>')
-					.append('')
+			var a = $('#containerProdutos').append('<div class="produto-wrap" id="produto-wrap-' + contadorDeProdutos + '">')
+			
+			var b = $('#produto-wrap-' + contadorDeProdutos ).append(
+					'<select name="produtosPorProjeto['+contadorDeProdutos+'].produto.id" class="select-produtos"><c:forEach items="${produtos}" var="produto"><option value="${produto.id}" class="opt-produto">${produto.nome}</option></c:forEach></select>')
+					.append('<label>Quantidade necessária: </label><input type="number" class="quantidade" />')
 						
 			$('.select-produtos').change(function(){
 				var selected = $(this).val()

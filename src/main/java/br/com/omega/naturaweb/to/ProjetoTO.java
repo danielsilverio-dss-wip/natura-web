@@ -7,12 +7,12 @@ public class ProjetoTO {
 	private String descricao;
 	private long ong;
 	private byte[] imagem;
-	private long[] produtosPorProjeto;
+	private ProdutosPorProjetoTO[] produtosPorProjeto;
 	
 	public ProjetoTO(){}
 	
 	public ProjetoTO(long id, String nome, String descricao, long ong, byte[] imagem,
-			long[] produtosPorProjeto) {
+			ProdutosPorProjetoTO[] produtosPorProjeto) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -46,10 +46,10 @@ public class ProjetoTO {
 	public void setOng(long ong) {
 		this.ong = ong;
 	}
-	public long[] getProdutosPorProjeto() {
+	public ProdutosPorProjetoTO[] getProdutosPorProjeto() {
 		return produtosPorProjeto;
 	}
-	public void setProdutosPorProjeto(long[] produtosPorProjeto) {
+	public void setProdutosPorProjeto(ProdutosPorProjetoTO[] produtosPorProjeto) {
 		this.produtosPorProjeto = produtosPorProjeto;
 	}
 	public byte[] getImagem() {
