@@ -27,8 +27,6 @@
 <title>Projeto Natura</title>
 
 
-
-
 </head>
 <body>
 	<header class="cd-main-header"> <a href="/"
