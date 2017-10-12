@@ -8,17 +8,20 @@
  
 <jsp:include page= "../snippets/nav-empresa.jsp"/>
 
+<div class="container">
+
 		<div class="conteudo">
 
-	<h1>Novo produto</h1>
+	<h2>Novo produto</h2>
+	</br>
 	
 	<form action="save" method="post">
-		<div>
-			<label>Nome</label>
-			<input type="text" name="nome" />
+		<div class="form-group">
+			<label>Nome</label></br></br>
+			<input class="form-control" type="text" name="nome" placeholder="Digite seu nome" />
 		</div>	
-		<div>
-			<label>Categoria</label>
+		<div class="form-group">
+			<label>Categoria</label></br></br>
 			<select name="categoria.nome">
 				<c:forEach items="${categorias}" var="categoria">
 					<option value="${categoria.id}">${categoria.nome}</option>			
@@ -29,5 +32,6 @@
 	
 	<a href="/empresas/produtos/lista">Lista</a>
 
+</div>
 </div>
 </tags:template>
