@@ -12,7 +12,7 @@
 		
 	<div class="jumbotron">	
   		
-	<form action="/empresas/login" method="post">
+	<form action="/ongs/login" method="post">
 		<div class="form-group">
 		
 		<label for="email">Email</label><br/><br/>
@@ -30,7 +30,7 @@
 			
 	</form>
 	<br/><br/>
-	<h5>É novo aqui? Faça seu <a href="/empresas/cadastro">cadastro</a> :)</h5>
+	<h5>É novo aqui? Faça seu <a href="/ongs/cadastro" target="_blank">cadastro</a> :)</h5>
 
 		</div>
 	</div>

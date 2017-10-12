@@ -18,7 +18,7 @@
 	<form method="post" action="save">
 		<div class="form-group">
 			<label>Nome</label></br></br>
-			<input class="form-control" placeholder="Digite seu nome" type="text" name="nome" id="nome" />
+			<input class="form-control" placeholder="Nome do projeto" type="text" name="nome" id="nome" />
 		</div>
 		
 		<div class="form-group">
@@ -55,10 +55,11 @@
 		</div>
 		
 		<a href="#" id="addProduto" class="btn btn-light">+</a>
-		
+		<!-- 
 		<div>
 			<input type="file" name="imagem" class="upload-file"/>
 		</div>
+		 -->
 		<!-- 
 		<div>
 			<input type="submit" value="Cadastrar">
@@ -67,7 +68,7 @@
 	</form>
 	</br>
 	<div>
-		<button class="btn btn-primary">Cadastrar</button>
+		<button class="btn btn-primary btn-ajax">Cadastrar</button>
 	</div>
 	<br/>
 	<a href="lista">Listar</a>
