@@ -8,33 +8,51 @@
  
 <jsp:include page= "../snippets/nav-empresa.jsp"/>
 
-		<div class="conteudo">
-	<h1>Cadastre sua empresa</h1>
+	
+  		<div class="container">  		
+				<div class="conteudo">
+					
+	<h2 text-align="center">Cadastre sua empresa</h2>
+	<br/>
+	<br/>
 	
 	<form action="cadastro" method="post">
-
-		<div>
-			<label>Email</label>
-			<input type="text" name="email" >		
-		</div>
-		<div>
-			<label>Nome</label>
-			<input type="text" name="nome" >		
-		</div>
-		<div>
-			<label>CNPJ</label>
-			<input type="text" name="cnpj" >		
-		</div>
-		<div>
-			<label>Link de Busca</label><br/>
-			<span>
-			Precisamos saber o link de busca do site da sua empresa para <br/> 
-			redirecionar o cliente quando ele for comprar algum produto seu
-			</span><br/>
-			<input type="text" name="linkBusca" placeholder="Ex: https://minhaempresa.com/produtos/busca=" >		
-		</div>
 		
-		<input type="submit" value="Pronto!" />
+	<div class="form-group">
+		
+			<label for="email">Email</label><br/><br/>
+			<input type="email" class="form-control" id="email" placeholder="Digite seu Email" name="email" />
+			
+	</div>
+	
+
+	<div class="form-group">
+		<label for="nome">Nome</label><br/><br/>
+		<input type="text" class="form-control" id="nome" placeholder="Digite seu Nome" name="nome" />	
+			
+	</div>
+	
+	
+	<div class="form-group">
+		<label for="cnpj" >CNPJ</label><br/><br/>
+		<input type="text" class="form-control" id="cnpj" placeholder="Digite o CNPJ" name="cnpj" />		
+	</div>
+	
+	<div class="form-group">
+		<label for="busca">Link de Busca</label><br/><br/>
+		<input type="url" class="form-control" id="busca" placeholder="Ex: https://minhaempresa.com/produtos/busca=" name="busca" /><br/><br/>
+			
+	</div>
+	
+		<span class="glyphicon glyphicon-thumbs-up">
+		Precisamos saber o link de busca do site da sua empresa para <br/> 
+			redirecionar o cliente quando ele for comprar algum produto seu
+		</span><br/></br>
+		
+		<button type="submit" class="btn btn-primary">Pronto</button>
+		
+	
 	</form>
-</div>
+		</div>
+		</div>
 </tags:template>

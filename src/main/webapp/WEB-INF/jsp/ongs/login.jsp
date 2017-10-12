@@ -7,22 +7,34 @@
  
 <jsp:include page= "../snippets/nav-ong.jsp"/>
 
+	<div class="container">
 		<div class="conteudo">
-
-
-	<form action="/ongs/login" method="post">
-		<div>
-			<label>Email</label>
-			<input type="text" name="email" />
+		
+	<div class="jumbotron">	
+  		
+	<form action="/empresas/login" method="post">
+		<div class="form-group">
+		
+		<label for="email">Email</label><br/><br/>
+		<input type="email" class="form-control" id="email" placeholder="Digite seu Email" name="email" />
+		
 		</div>
-		<div>
-			<label>Senha</label>
-			<input type="password" name="senha" />
+		
+		<div class="form-group">
+		
+		<label for="senha">Senha</label><br/><br/>
+		<input type="password" class="form-control" id="senha" placeholder="Digite sua senha" name="senha" />
 		</div>
-		<input type="submit" value="Login" />	
+		<button type="submit" class="btn btn-primary">Logar</button>
+
+			
 	</form>
+	<br/><br/>
+	<h5>É novo aqui? Faça seu <a href="/empresas/cadastro">cadastro</a> :)</h5>
 
-	<p>É novo aqui? Faça seu <a href="/ongs/cadastro">cadastro</a> :)</p>
-	
+		</div>
 	</div>
-</tags:template>
+
+
+	</div>
+	</tags:template>
