@@ -11,13 +11,20 @@
 
 	<h1>Meus projetos</h1>
 	
-	<table>
+	
+	<table class="table table-striped">
+    <thead>
 		<tr>
-			<th>Id</th>	<th>Projeto</th>	<th>Descrição</th>
+			<th>Id</th>	
+			<th>Projeto</th>	
+			<th>Descrição</th>
 		</tr>
+		</thead>
 		<c:forEach items="${projetos}" var="projeto">
 			<tr>
-				<td>${projeto.id}</td>	<td>${projeto.nome}</td>	<td>${projeto.descricao}</td>
+				<td>${projeto.id}</td>	
+				<td>${projeto.nome}</td>	
+				<td>${projeto.descricao}</td>
 			</tr>
 			
 		</c:forEach>

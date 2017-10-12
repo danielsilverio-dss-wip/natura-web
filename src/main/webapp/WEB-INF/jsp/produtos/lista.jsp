@@ -12,23 +12,26 @@
 
 	<h1>Lista de Produtos</h1>
 	
-	<table>
+
+	<table class="table table-striped">
+    <thead>
 		<tr>
 			<th>Id</th>
 			<th>Produto</th>
 			<th>Fornecido</th>
 		</tr>
+		 </thead>
 		<c:forEach items="${produtos}" var="produto">
 			
 			<tr class="produto">
 				<td class="produto-id">${produto.id}</td>
 				<td class="produto-nome">${produto.nome}</td>
-				<td ><input class="produto-fornecido" type="checkbox" value="${produto.fornecido}" /></td>
-				<td>${produto.fornecido}</td>
+				<td colspan="4"><input class="produto-fornecido" type="checkbox" value="${produto.fornecido}" /></td>
 			</tr>
 			
 		</c:forEach>
 	</table>
+	
 	
 	<button id="teste">oi</button>
 	
